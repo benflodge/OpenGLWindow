@@ -94,12 +94,14 @@ int main()
         glBindVertexArray(VAO);
 
         shaderOne.use();
+        float timeValue = glfwGetTime();
+        float offset = (sin(timeValue) / 2.0f) + 0.5f;
+
+        shaderOne.setFloat("offset", offset);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         //glUseProgram(shaderProgramTwo);
 
-        //float timeValue = glfwGetTime();
-        //float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
         //int vertexColorLocation = glGetUniformLocation(shaderProgramTwo, "ourColor");
         //if (vertexColorLocation == -1)
         //{
