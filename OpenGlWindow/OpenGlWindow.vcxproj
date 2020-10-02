@@ -144,6 +144,15 @@
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\our-colour-uniform.fs" />
+    <None Include="assets\shaders\our-colour.fs" />
+    <None Include="assets\shaders\position-colour.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
