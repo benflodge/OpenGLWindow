@@ -141,10 +141,18 @@ int main()
 
         shaderOne.use();
 
-
         glBindVertexArray(VAO);
 
         //glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        // create transformations
+        transform = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        transform = glm::translate(transform, glm::vec3(-1.0f, -1.0f, 0.0f));
+
+        unsigned int transformLoc2 = glGetUniformLocation(shaderOne.ID, "transform");
+        glUniformMatrix4fv(transformLoc2, 1, GL_FALSE, &transform[0][0]);
+
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         //glUseProgram(shaderProgramTwo);
