@@ -153,9 +153,14 @@
     <ClInclude Include="src\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\shaders\Light.fs" />
     <None Include="assets\shaders\our-colour-uniform.fs" />
     <None Include="assets\shaders\our-colour.fs" />
     <None Include="assets\shaders\position-colour.vs" />
+    <None Include="assets\shaders\two-u-texture-mix.fs" />
+    <None Include="assets\shaders\u-light-object-colour.fs" />
+    <None Include="assets\shaders\u-mvp-o-texture-colour.vs" />
+    <None Include="assets\shaders\u-mvp-position.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\img\awesomeface.png" />
