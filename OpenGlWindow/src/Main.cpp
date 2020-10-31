@@ -189,9 +189,25 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         lightingShader.use();
-        lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-        lightingShader.setVec3("lightPos", lightPos);
+        lightingShader.setVec3("light.position", lightPos);
+        lightingShader.setVec3("viewPos", camera.Position);
+
+        // light properties
+        glm::vec3 lightColor;
+        lightColor.x = sin(currentFrame * 2.0f);
+        lightColor.y = sin(currentFrame * 0.7f);
+        lightColor.z = sin(currentFrame * 1.3f);
+        glm::vec3 diffuseColor = lightColor * glm::vec3(0.5f); // decrease the influence
+        glm::vec3 ambientColor = diffuseColor * glm::vec3(0.2f); // low influence
+        lightingShader.setVec3("light.ambient", ambientColor);
+        lightingShader.setVec3("light.diffuse", diffuseColor);
+        lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+        // material properties
+        lightingShader.setVec3("material.ambient", 1.0f, 0.5f, 0.31f);
+        lightingShader.setVec3("material.diffuse", 1.0f, 0.5f, 0.31f);
+        lightingShader.setVec3("material.specular", 0.5f, 0.5f, 0.5f); // specular lighting doesn't have full effect on this object's material
+        lightingShader.setFloat("material.shininess", 32.0f);
 
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), 800.0f / 600.0f, 0.1f, 100.0f);
         lightingShader.setMat4("projection", projection);
